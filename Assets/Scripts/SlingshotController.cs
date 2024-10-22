@@ -29,7 +29,7 @@ public class SlingshotController : XRGrabInteractable
         }
         else
         {
-            isGrabbed = true;
+            isGrabbed = false;
             hand = "none";
         }
     }
@@ -37,6 +37,7 @@ public class SlingshotController : XRGrabInteractable
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         base.OnSelectExited(args);
+        isGrabbed = false;
     }
 
     public (bool,string) checkSlingshotGrabbedAndHand()
