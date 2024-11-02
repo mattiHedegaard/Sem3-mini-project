@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SlingshotController : XRGrabInteractable
 {
+    [Header("myScript")]
     public bool isGrabbed = false;
     public string hand = "none";
 
