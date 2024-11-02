@@ -20,7 +20,7 @@ public class playerController : MonoBehaviour
     [Header("SlingshotController")]
     [SerializeField] SlingshotController slingshotController;
     private GameObject loadedRock;
-    private bool isRockLoaded = false;
+    public bool isRockLoaded = false;
     [SerializeField] float forceMultiplier = 50f;
 
     [Header("Hands")]
@@ -125,7 +125,7 @@ public class playerController : MonoBehaviour
     private void pullRockBack(float trigger, GameObject controller)
     {
         loadedRock.transform.position = controller.transform.position;
-        leather.transform.position = controller.transform.position;
+        leather.transform.position = new Vector3(controller.transform.position.x - 0.008f, controller.transform.position.y, controller.transform.position.z);
 
         Vector3 directionToStart = (start.transform.position - loadedRock.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(directionToStart);
