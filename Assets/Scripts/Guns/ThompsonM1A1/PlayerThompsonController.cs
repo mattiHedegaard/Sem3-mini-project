@@ -18,7 +18,7 @@ public class PlayerThompsonController : MonoBehaviour
     ActionBasedController rightXRController;
 
     [Header("ThompsonController")]
-    [SerializeField] ThompsonController thompsonController;
+    [SerializeField] GrabableController grabableController;
     public Transform attachPoint;
 
     [Header("Hands")]
@@ -55,19 +55,19 @@ public class PlayerThompsonController : MonoBehaviour
         float rightTriggerPressed = rightTrigger.action.ReadValue<float>();//float from 0 to 1, check for fully pressed with 1.
         float leftTriggerPressed = leftTrigger.action.ReadValue<float>(); //float from 0 to 1, check for fully pressed with 1.
 
-        if (thompsonController != null)
+        if (grabableController != null)
         {
-            if (thompsonController.isGrabbed)
+            if (grabableController.isGrabbed)
             {
 
 
-                if (thompsonController.hand == "left")
+                if (grabableController.hand == "left")
                 {
                     leftHandDefaultModel.SetActive(false);
                     currentHandTriggerPressed = leftTriggerPressed;
                     currentXRController = leftXRController;
                 }
-                else if (thompsonController.hand == "right")
+                else if (grabableController.hand == "right")
                 {
                     rightHandDefaultModel.SetActive(false);
                     currentHandTriggerPressed = rightTriggerPressed;

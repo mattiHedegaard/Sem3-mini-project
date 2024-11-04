@@ -12,21 +12,24 @@ public class M1GGunShoot : MonoBehaviour
     [Header("controller")]
     [SerializeField] PlayerM1Controller playerM1GController;
 
+    [Header("Shooting")]
     bool justFired;
-
-    public float durr;
-    public float amp;
+    [SerializeField] float hapticDurr;
+    [SerializeField] float hapticAmp;
     public GameObject prefab;
-    
+    public int ammo = 0;
+
     private void Update()
     {
         GameObject objectHit = null;
 
         if (playerM1GController != null)
         {
-            if (playerM1GController.currentHandTriggerPressed == 1f && !justFired)
+            if (playerM1GController.currentHandTriggerPressed == 1f && !justFired && ammo > 0)
             {
-                playerM1GController.currentXRController.SendHapticImpulse(amp, durr);
+                ammo -= 1;
+
+                playerM1GController.currentXRController.SendHapticImpulse(hapticAmp, hapticDurr);
                 
                 
 

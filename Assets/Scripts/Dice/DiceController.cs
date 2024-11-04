@@ -6,7 +6,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using static UnityEngine.XR.OpenXR.Features.Interactions.HTCViveControllerProfile;
 
-public class DiceContrller : MonoBehaviour
+public class DiceController : MonoBehaviour
 {
     [Header("controller Input")]
     public InputActionProperty leftMenuBtn;
@@ -32,6 +32,7 @@ public class DiceContrller : MonoBehaviour
     bool diceReady = true;
     bool isgrabbed;
     int rolled;
+    DiceShop diceShop;
 
     private List<GameObject> numberList = new List<GameObject>();
 
@@ -51,13 +52,14 @@ public class DiceContrller : MonoBehaviour
         numberList.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
 
         rb = GetComponent<Rigidbody>();
+        diceShop = GetComponent<DiceShop>();
     }
 
     // Update is called once per frame
     void Update()
     { 
         //Menu
-        float rightMenuPressed = rightMenuBtn.action.ReadValue<float>();
+        float rightMenuPressed = rightMenuBtn.action.ReadValue<float>(); //pause enemys when this is pressed
         float leftMenuPressed = leftMenuBtn.action.ReadValue<float>();
         //Grip
         float rightGripPressed = rightGrip.action.ReadValue<float>();
@@ -94,10 +96,12 @@ public class DiceContrller : MonoBehaviour
             {
                 numberList.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
                 rolled = int.Parse(numberList[0].name);
-                Debug.Log(rolled);
-                
+                diceShop.rolledPoints += rolled;
+                rolled = 0;
+
                 diceRolled = false;
                 dig.diceRolled = false;
+                diceShop.inShop = true;
             }
         }
 

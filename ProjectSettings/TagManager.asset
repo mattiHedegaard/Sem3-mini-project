@@ -7,7 +7,11 @@ TagManager:
   - RightController
   - LeftController
   - notShootable
+  - Inventory
+  - Weapon
   - M1
+  - M1SI
+  - ThompsonSI
   layers:
   - Default
   - TransparentFX

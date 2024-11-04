@@ -18,7 +18,7 @@ public class PlayerM1Controller : MonoBehaviour
     ActionBasedController rightXRController;
 
     [Header("M1GController")]
-    [SerializeField] M1GController m1gController;
+    [SerializeField] GrabableController grabableController;
     public Transform attachPoint;
 
     [Header("Hands")]
@@ -55,19 +55,19 @@ public class PlayerM1Controller : MonoBehaviour
         float rightTriggerPressed = rightTrigger.action.ReadValue<float>();//float from 0 to 1, check for fully pressed with 1.
         float leftTriggerPressed = leftTrigger.action.ReadValue<float>(); //float from 0 to 1, check for fully pressed with 1.
 
-        if (m1gController != null)
+        if (grabableController != null)
         {
-            if (m1gController.isGrabbed)
+            if (grabableController.isGrabbed)
             {
                 
                 
-                if (m1gController.hand == "left")
+                if (grabableController.hand == "left")
                 {
                     leftHandDefaultModel.SetActive(false);
                     currentHandTriggerPressed = leftTriggerPressed;
                     currentXRController = leftXRController;
                 }
-                else if (m1gController.hand == "right")
+                else if (grabableController.hand == "right")
                 {
                     rightHandDefaultModel.SetActive(false);
                     currentHandTriggerPressed = rightTriggerPressed;

@@ -10,17 +10,13 @@ public class ThompsonGunShoot : MonoBehaviour
     [Header("controller")]
     [SerializeField] PlayerThompsonController playerThompsonController;
 
-    float shootCD;
-    public float shootCDMax;
-
-    public float durr;
-    public float amp;
-    public GameObject prefab;
-
-    private void Start()
-    {
-        shootCD = 0f;
-    }
+    [Header("Shooting")]
+    float shootCD = 0f;
+    [SerializeField] float shootCDMax;
+    [SerializeField] float hapticDurr;
+    [SerializeField] float hapticAmp;
+    [SerializeField] GameObject prefab;
+    public int ammo = 0;
 
     private void Update()
     {
@@ -28,15 +24,15 @@ public class ThompsonGunShoot : MonoBehaviour
         {
             shootCD -= 1*Time.deltaTime;
         }
-        Debug.Log(shootCD);
         GameObject objectHit = null;
 
         if (playerThompsonController != null)
         {
-            if (playerThompsonController.currentHandTriggerPressed == 1f && shootCD <= 0f)
+            if (playerThompsonController.currentHandTriggerPressed == 1f && shootCD <= 0f && ammo > 0)
             {
+                ammo -= 1;
                 shootCD = shootCDMax;
-                playerThompsonController.currentXRController.SendHapticImpulse(amp, durr);
+                playerThompsonController.currentXRController.SendHapticImpulse(hapticAmp, hapticDurr);
 
                 RaycastHit hit;
 

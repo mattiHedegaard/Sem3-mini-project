@@ -9,6 +9,7 @@ public class SlingshotController : XRGrabInteractable
     [Header("myScript")]
     public bool isGrabbed = false;
     public string hand = "none";
+    bool inInventory;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -41,7 +42,7 @@ public class SlingshotController : XRGrabInteractable
         isGrabbed = false;
     }
 
-    public (bool,string) checkSlingshotGrabbedAndHand()
+    public (bool, string) checkSlingshotGrabbedAndHand()
     {
         return (isGrabbed, hand);
     }

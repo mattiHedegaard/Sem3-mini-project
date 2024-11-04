@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class ThompsonController : XRGrabInteractable
@@ -8,6 +9,7 @@ public class ThompsonController : XRGrabInteractable
     [Header("myScript")]
     public bool isGrabbed = false;
     public string hand = "none";
+    bool inInventory;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -32,7 +34,6 @@ public class ThompsonController : XRGrabInteractable
             isGrabbed = false;
             hand = "none";
         }
-
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)

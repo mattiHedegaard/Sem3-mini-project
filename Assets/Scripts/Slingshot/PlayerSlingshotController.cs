@@ -18,7 +18,7 @@ public class playerSlingshotController : MonoBehaviour
     ActionBasedController rightXRController;
 
     [Header("SlingshotController")]
-    [SerializeField] SlingshotController slingshotController;
+    [SerializeField] GrabableController grabableController;
     private GameObject loadedRock;
     public bool isRockLoaded = false;
     [SerializeField] float forceMultiplier = 50f;
@@ -34,6 +34,12 @@ public class playerSlingshotController : MonoBehaviour
     [SerializeField] GameObject end;
     [SerializeField] GameObject leather;
     [SerializeField] GameObject rockPrefab;
+
+    [Header("Haptic")]
+    public float holdingHapticAmp;
+    public float holdingHapticDurr;
+    public float releaseHapticAmp;
+    public float releaseHapticDurr;
 
     [SerializeField] PlayerController playerController;
 
@@ -64,27 +70,33 @@ public class playerSlingshotController : MonoBehaviour
         float leftTriggerPressed = leftTrigger.action.ReadValue<float>(); //float from 0 to 1, check for fully pressed with 1.
         float currentHandTriggerPressed = 0f;
         GameObject currentRockHand = null;
+        ActionBasedController currentXRController = null;
+        ActionBasedController currentRockXRController = null;
 
 
-        if (slingshotController != null)
+        if (grabableController != null)
         {
-            if (slingshotController.isGrabbed)
+            if (grabableController.isGrabbed)
             {
-                if (slingshotController.hand == "left")
+                if (grabableController.hand == "left")
                 {
                     rightHandDefaultModel.SetActive(false);
                     leftHandDefaultModel.SetActive(false);
                     if (!isRockLoaded) rightHandRockModel.SetActive(true); else rightHandRockModel.SetActive(false);
                     currentHandTriggerPressed = rightTriggerPressed;
                     currentRockHand = rightController;
+                    currentXRController = leftXRController;
+                    currentRockXRController = rightXRController;
                 }
-                else if (slingshotController.hand == "right")
+                else if (grabableController.hand == "right")
                 {
                     leftHandDefaultModel.SetActive(false);
                     rightHandDefaultModel.SetActive(false);
                     if (!isRockLoaded) leftHandRockModel.SetActive(true); else leftHandRockModel.SetActive(false);
                     currentHandTriggerPressed = leftTriggerPressed;
                     currentRockHand = leftController;
+                    currentXRController = rightXRController;
+                    currentRockXRController = leftXRController;
                 }
 
             }
@@ -96,6 +108,8 @@ public class playerSlingshotController : MonoBehaviour
                 rightHandRockModel.SetActive(false);
                 currentHandTriggerPressed = 0f;
                 currentRockHand = null;
+                currentXRController = null;
+                currentRockXRController = null;
             }
 
 
@@ -106,7 +120,8 @@ public class playerSlingshotController : MonoBehaviour
             }
             else if (isRockLoaded)
             {
-                pullRockBack(currentHandTriggerPressed, currentRockHand);
+                pullRockBack(currentHandTriggerPressed, currentRockHand, currentXRController);
+                currentRockXRController.SendHapticImpulse(holdingHapticAmp, holdingHapticDurr);
             }
         }
     }
@@ -129,7 +144,7 @@ public class playerSlingshotController : MonoBehaviour
         isRockLoaded = true;
     }
 
-    private void pullRockBack(float trigger, GameObject controller)
+    private void pullRockBack(float trigger, GameObject controller, ActionBasedController XRController)
     {
         loadedRock.transform.position = controller.transform.position;
         leather.transform.position = new Vector3(controller.transform.position.x - 0.008f, controller.transform.position.y, controller.transform.position.z);
@@ -142,6 +157,7 @@ public class playerSlingshotController : MonoBehaviour
         {
             releaseRock(controller);
             leather.transform.position = start.transform.position;
+            XRController.SendHapticImpulse(releaseHapticAmp, releaseHapticDurr);
         }
     }
 
@@ -150,9 +166,6 @@ public class playerSlingshotController : MonoBehaviour
         float force = Vector3.Distance(controller.transform.position, start.transform.position);
         Vector3 forceDir = (start.transform.position -  loadedRock.transform.position).normalized;
         //forceDir.y = 0;
-
-        Debug.Log("Dir: " + forceDir);
-        Debug.Log("force: " + force*forceMultiplier);
 
         loadedRock.transform.position = start.transform.position;
 
