@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    [SerializeField] GameObject startHolding;
+    [SerializeField] GameObject holding;
 
     private void Update()
     {
-        if (startHolding != null)
+        if (holding != null)
         {
-            GrabableController grab = startHolding.GetComponent<GrabableController>();
-            if (grab != null)
+            GrabableController holdingGrab = holding.GetComponent<GrabableController>();
+            if (holdingGrab != null)
             {
-                startHolding.transform.position = transform.position;
-                if (grab.isGrabbed) startHolding = null;
+                if (!holdingGrab.isGrabbed)
+                {
+                    holdingGrab.inInventory = true;
+                    holding.transform.position = transform.position;
+                    Vector3 currentEulerAngles = transform.rotation.eulerAngles;
+
+                    // Create a new Vector3 with the desired adjustments
+                    Vector3 angle = new Vector3(currentEulerAngles.x + 45, currentEulerAngles.y - 90, currentEulerAngles.z);
+
+                    // Set the rotation of currObject using the modified angles
+                    holding.transform.rotation = Quaternion.Euler(angle);
+                }
+                else
+                {
+                    holdingGrab.inInventory= false;
+                }
             }
         }
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Weapon"))
@@ -49,7 +64,7 @@ public class InventoryController : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
 }
 /*GameObject holding;

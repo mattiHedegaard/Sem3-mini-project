@@ -10,8 +10,7 @@ TagManager:
   - Inventory
   - Weapon
   - M1
-  - M1SI
-  - ThompsonSI
+  - ShopItem
   layers:
   - Default
   - TransparentFX

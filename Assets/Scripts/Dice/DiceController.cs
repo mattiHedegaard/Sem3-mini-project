@@ -21,7 +21,7 @@ public class DiceController : MonoBehaviour
     [Header("Body")]
     [SerializeField] GameObject playerBody;
     [SerializeField] float xOffset = 0.5f;
-    [SerializeField] float yOffset = 0.5f;
+    [SerializeField] float yOffset = 0.8f;
 
     [Header("Dice")]
     [SerializeField] DiceIsGrabbed dig;
@@ -46,7 +46,7 @@ public class DiceController : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            numberList.Add(child.gameObject); //this line says this: NullReferenceException: Object reference not set to an instance of an object DiceContrller.Start()(at Assets / Scripts / DiceController.cs:34)
+            numberList.Add(child.gameObject);
         }
 
         numberList.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));

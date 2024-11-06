@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DiceShop : MonoBehaviour
@@ -17,6 +18,8 @@ public class DiceShop : MonoBehaviour
     [SerializeField] GameObject m1gSIObject;
     [SerializeField] GameObject thompsonSIObject;
     [SerializeField] GameObject cancenSIObject;
+    [SerializeField] GameObject points;
+    [SerializeField] TextMeshPro text;
 
     public int rolledPoints;
 
@@ -33,12 +36,15 @@ public class DiceShop : MonoBehaviour
             m1gSIObject.SetActive(true);
             thompsonSIObject.SetActive(true);
             cancenSIObject.SetActive(true);
+            points.SetActive(true);
+            text.text = $"You have {rolledPoints} points!";
         }
         else
         {
             m1gSIObject.SetActive(false);
             thompsonSIObject.SetActive(false);
             cancenSIObject.SetActive(false);
+            points.SetActive(false);
         }
     }
 }
