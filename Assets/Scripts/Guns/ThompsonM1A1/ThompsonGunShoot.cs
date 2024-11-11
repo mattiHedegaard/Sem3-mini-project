@@ -45,7 +45,8 @@ public class ThompsonGunShoot : MonoBehaviour
                     if (objectHit != null)
                     {
                         Vector3 hitLocation = hit.point;
-                        Instantiate(prefab, hitLocation, Quaternion.identity);
+                        GameObject bulletHole = Instantiate(prefab, hitLocation, Quaternion.identity);
+                        bulletHole.transform.SetParent(objectHit.transform);
                     }
 
                     if (objectHit == null) Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f); else Debug.DrawRay(ray.origin, ray.direction * 10f, Color.white, 1f);
