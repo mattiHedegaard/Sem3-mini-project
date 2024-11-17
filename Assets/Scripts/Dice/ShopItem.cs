@@ -73,6 +73,7 @@ public class ShopItem : MonoBehaviour
                     break;
             }
             diceShop.rolledPoints -= price;
+            if (diceShop.rolledPoints < 2) diceShop.inShop = false;
         }
     }
 }

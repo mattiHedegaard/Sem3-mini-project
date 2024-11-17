@@ -11,6 +11,7 @@ TagManager:
   - Weapon
   - M1
   - ShopItem
+  - crystal
   layers:
   - Default
   - TransparentFX
