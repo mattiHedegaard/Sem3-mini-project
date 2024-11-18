@@ -188,7 +188,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -661,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5297101467567737803, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 5297101467567737803, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -669,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5297101467567737803, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.055
       objectReference: {fileID: 0}
     - target: {fileID: 5297101467567737803, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: m_LocalRotation.w

@@ -33,6 +33,7 @@ public class DiceController : MonoBehaviour
     bool isgrabbed;
     int rolled;
     DiceShop diceShop;
+    public int dicePoints = 0;
 
     private List<GameObject> numberList = new List<GameObject>();
 
@@ -65,7 +66,7 @@ public class DiceController : MonoBehaviour
         float rightGripPressed = rightGrip.action.ReadValue<float>();
         float leftGripPressed = leftGrip.action.ReadValue<float>();
 
-        if (rightMenuPressed == 1f || leftMenuPressed == 1f) diceCalled = true;
+        if ((rightMenuPressed == 1f || leftMenuPressed == 1f) && dicePoints >= 100) diceCalled = true;
 
         if (diceCalled)
         {
@@ -88,6 +89,7 @@ public class DiceController : MonoBehaviour
         if (diceReady && dig.diceRolled)
         {
             diceRolled = true;
+            dicePoints -= 100;
         }
 
         if (diceRolled)

@@ -12,6 +12,7 @@ TagManager:
   - M1
   - ShopItem
   - crystal
+  - enemy
   layers:
   - Default
   - TransparentFX
