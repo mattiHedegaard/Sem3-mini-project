@@ -1662,6 +1662,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8610027036279657561, guid: c51cfde65efc2c74f8757957fc12488b, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1749145253}
     - target: {fileID: 9123504390045771733, guid: c51cfde65efc2c74f8757957fc12488b, type: 3}
       propertyPath: yOffset
       value: 0.7
@@ -5234,6 +5238,17 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 7102985779539139124, guid: c51cfde65efc2c74f8757957fc12488b, type: 3}
   m_PrefabInstance: {fileID: 760162348}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1749145253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9123504390045771733, guid: c51cfde65efc2c74f8757957fc12488b, type: 3}
+  m_PrefabInstance: {fileID: 760162348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749145247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43628b3c0895a6346b9fe8da3b656d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1770667091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4391721197563231290, guid: 3ddfe079cafda7a40a472a84e0f88da4, type: 3}

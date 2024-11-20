@@ -405,6 +405,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 6043694163906582824}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 3628882014891373786}
@@ -482,6 +486,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -154.538
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 8693710922785831149}
     - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: enemyController
       value: 
@@ -561,6 +569,10 @@ PrefabInstance:
       value: 91.026
       objectReference: {fileID: 0}
     - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 3918341043082409256}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 3628882014891373786}
@@ -639,6 +651,10 @@ PrefabInstance:
       value: -67.609
       objectReference: {fileID: 0}
     - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2766409198928815494}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: enemyController
       value: 
       objectReference: {fileID: 3628882014891373786}
@@ -716,6 +732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -265.311
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 2394398658633253319}
     - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
       propertyPath: enemyController
       value: 

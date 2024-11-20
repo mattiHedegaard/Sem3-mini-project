@@ -7,6 +7,7 @@ public class DiceIsGrabbed : XRGrabInteractable
 {
     public bool isGrabbed;
     public bool diceRolled;
+    public DiceController controller;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -33,6 +34,11 @@ public class DiceIsGrabbed : XRGrabInteractable
     {
         base.OnSelectExited(args);
         isGrabbed = false;
-        diceRolled = true;
+        if (controller.enoughPoints)
+        {
+            diceRolled = true;
+            controller.dicePoints -= 100;
+            controller.enoughPoints = false;
+        }
     }
 }

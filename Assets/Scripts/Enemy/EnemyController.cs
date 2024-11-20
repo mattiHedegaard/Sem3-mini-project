@@ -18,12 +18,11 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        foreach (Transform child in transform)
         {
-            Transform child = transform.GetChild(i);
+            crystals.Add(child.gameObject);
             child.gameObject.SetActive(false);
         }
-        Debug.Log(crystals.Count);
     }
 
     // Update is called once per frame
@@ -52,16 +51,9 @@ public class EnemyController : MonoBehaviour
 
     void updateCrystals()
     {
-        int crystalIndex1 = 0;
-        int crystalIndex2 = 1;
-
-        if (crystals.Count > 1)
-        {
-            crystalIndex1 = Random.Range(0, crystals.Count);
-            crystalIndex2 = Random.Range(0, crystals.Count);
-            while (crystalIndex1 == crystalIndex2) crystalIndex2 = Random.Range(0, crystals.Count);
-        }
-        else Debug.Log("pis");
+        int crystalIndex1 = Random.Range(0, crystals.Count - 1);
+        int crystalIndex2 = Random.Range(0, crystals.Count-1);
+        while (crystalIndex2 == crystalIndex1) crystalIndex2 = Random.Range(0, crystals.Count-1);
 
         for (int i = 0;i < crystals.Count; i++)
         {

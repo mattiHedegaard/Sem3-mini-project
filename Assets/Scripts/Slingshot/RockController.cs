@@ -10,16 +10,6 @@ public class RockController : MonoBehaviour
     private void Start()
     {
         diceController = FindObjectOfType<DiceController>();
-
-        // Check if it's found
-        if (diceController != null)
-        {
-            Debug.Log("DiceController found!");
-        }
-        else
-        {
-            Debug.LogError("DiceController not found in the scene!");
-        }
     }
 
     private void Update()

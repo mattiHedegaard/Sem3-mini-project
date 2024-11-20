@@ -6,11 +6,12 @@ public class CrystalController : MonoBehaviour
 {
     public GameObject destroyedVersion;
     public EnemyController enemyController;
+    public GameObject parent;
 
     public void destroyCrystal()
     {
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        gameObject.SetActive(false);
         enemyController.activeCrystals--;
+        parent.SetActive(false);
     }
 }

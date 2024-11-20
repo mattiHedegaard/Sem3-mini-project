@@ -29,11 +29,12 @@ public class DiceController : MonoBehaviour
     bool diceCalled = false;
     bool diceRolled = false;
     bool diceThrowed = false;
-    bool diceReady = true;
+    bool diceReady = false;
     bool isgrabbed;
     int rolled;
     DiceShop diceShop;
     public int dicePoints = 0;
+    public bool enoughPoints = false;
 
     private List<GameObject> numberList = new List<GameObject>();
 
@@ -58,7 +59,8 @@ public class DiceController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        Debug.Log(dicePoints + "\t" + enoughPoints);
         //Menu
         float rightMenuPressed = rightMenuBtn.action.ReadValue<float>(); //pause enemys when this is pressed
         float leftMenuPressed = leftMenuBtn.action.ReadValue<float>();
@@ -66,7 +68,13 @@ public class DiceController : MonoBehaviour
         float rightGripPressed = rightGrip.action.ReadValue<float>();
         float leftGripPressed = leftGrip.action.ReadValue<float>();
 
-        if ((rightMenuPressed == 1f || leftMenuPressed == 1f) && dicePoints >= 100) diceCalled = true;
+        if (dicePoints >= 100)
+        {
+            enoughPoints = true;
+        }
+        else enoughPoints = false;
+
+        if ((rightMenuPressed == 1f || leftMenuPressed == 1f) && enoughPoints) diceCalled = true;
 
         if (diceCalled)
         {
@@ -89,10 +97,9 @@ public class DiceController : MonoBehaviour
         if (diceReady && dig.diceRolled)
         {
             diceRolled = true;
-            dicePoints -= 100;
         }
 
-        if (diceRolled)
+        if (diceRolled && dig.diceRolled)
         {
             if (rb.IsSleeping())
             {
