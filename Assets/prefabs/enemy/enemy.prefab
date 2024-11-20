@@ -211,6 +211,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 3572193868786796472}
   target: {fileID: 0}
   terrain: {fileID: 0}
+  activeCrystals: 0
 --- !u!1 &2766409198928815494
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +404,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3628882014891373786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,6 +482,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -154.538
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3628882014891373786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -551,6 +560,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 91.026
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3628882014891373786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -625,6 +638,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -67.609
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3628882014891373786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -699,6 +716,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -265.311
       objectReference: {fileID: 0}
+    - target: {fileID: 6801336888627526246, guid: 4cf2fcf5654d0bb478b36c26d40936e0, type: 3}
+      propertyPath: enemyController
+      value: 
+      objectReference: {fileID: 3628882014891373786}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

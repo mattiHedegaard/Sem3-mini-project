@@ -34,7 +34,7 @@ public class RockController : MonoBehaviour
             Destroy(gameObject);
             CrystalController crystalController = collision.gameObject.GetComponent<CrystalController>();
             crystalController.destroyCrystal();
-            diceController.dicePoints += Random.Range(5, 10);
+            diceController.dicePoints += Random.Range(25, 35);
         }
     }
 }

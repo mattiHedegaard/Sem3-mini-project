@@ -5,10 +5,12 @@ using UnityEngine;
 public class CrystalController : MonoBehaviour
 {
     public GameObject destroyedVersion;
+    public EnemyController enemyController;
 
     public void destroyCrystal()
     {
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        enemyController.activeCrystals--;
     }
 }
