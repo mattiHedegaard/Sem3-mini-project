@@ -17,6 +17,7 @@ public class ThompsonGunShoot : MonoBehaviour
     [SerializeField] float hapticAmp;
     [SerializeField] GameObject prefab;
     public int ammo = 0;
+    public DiceController diceController;
 
     private void Update()
     {
@@ -47,6 +48,18 @@ public class ThompsonGunShoot : MonoBehaviour
                         Vector3 hitLocation = hit.point;
                         GameObject bulletHole = Instantiate(prefab, hitLocation, Quaternion.identity);
                         bulletHole.transform.SetParent(objectHit.transform);
+
+                        if (objectHit.CompareTag("enemy"))
+                        {
+                            EnemyController enemy = objectHit.GetComponent<EnemyController>();
+                            enemy.hp--;
+                        }
+                        if (objectHit.CompareTag("crystal"))
+                        {
+                            CrystalController crystal = objectHit.GetComponent<CrystalController>();
+                            crystal.destroyCrystal();
+                            diceController.dicePoints += Random.Range(25, 35);
+                        }
                     }
 
                     if (objectHit == null) Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f); else Debug.DrawRay(ray.origin, ray.direction * 10f, Color.white, 1f);

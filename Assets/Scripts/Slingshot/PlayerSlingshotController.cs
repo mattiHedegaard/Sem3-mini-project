@@ -141,6 +141,7 @@ public class playerSlingshotController : MonoBehaviour
     void createRock()
     {
         loadedRock = Instantiate(rockPrefab, start.transform.position, Quaternion.Euler(0,0,0));
+        loadedRock.transform.GetChild(0).gameObject.SetActive(false);
         isRockLoaded = true;
     }
 
@@ -163,6 +164,7 @@ public class playerSlingshotController : MonoBehaviour
 
     private void releaseRock(GameObject controller)
     {
+        loadedRock.transform.GetChild(0).gameObject.SetActive(true);
         float force = Vector3.Distance(controller.transform.position, start.transform.position);
         Vector3 forceDir = (start.transform.position -  loadedRock.transform.position).normalized;
         //forceDir.y = 0;

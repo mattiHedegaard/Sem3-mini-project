@@ -7,6 +7,7 @@ public class CrystalController : MonoBehaviour
     public GameObject destroyedVersion;
     public EnemyController enemyController;
     public GameObject parent;
+    public DiceController diceController;
 
     public void destroyCrystal()
     {

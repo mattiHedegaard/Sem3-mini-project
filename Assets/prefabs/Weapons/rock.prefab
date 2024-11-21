@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 60
-  diceController: {fileID: 0}
 --- !u!1 &5833425726558479766
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
     List<GameObject> crystals = new List<GameObject>();
     public int activeCrystals = 0;
 
+    [Header("Enemy")]
+    public int hp = 10;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,10 @@ public class EnemyController : MonoBehaviour
         DebugPath(navMeshAgent.destination);
 
         if (activeCrystals == 0) updateCrystals();
+
+        if (hp <= 0) Destroy(gameObject);
     }
+
     void DebugPath(Vector3 targetPosition)
     {
         NavMeshPath path = new NavMeshPath();
@@ -45,8 +51,6 @@ public class EnemyController : MonoBehaviour
         {
             Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red, 0.1f); // Lasts for 0.1s
         }
-
-
     }
 
     void updateCrystals()

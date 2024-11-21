@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR.Haptics;
 using UnityEngine.XR.Interaction.Toolkit;
+using static UnityEngine.XR.OpenXR.Features.Interactions.HTCViveControllerProfile;
 
 public class M1GGunShoot : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class M1GGunShoot : MonoBehaviour
     [SerializeField] float hapticAmp;
     public GameObject prefab;
     public int ammo = 0;
+    public DiceController diceController;
 
     private void Update()
     {
@@ -48,6 +50,17 @@ public class M1GGunShoot : MonoBehaviour
                         Vector3 hitLocation = hit.point;
                         GameObject bulletHole = Instantiate(prefab, hitLocation, Quaternion.identity);
                         bulletHole.transform.SetParent(objectHit.transform);
+                        if (objectHit.CompareTag("enemy"))
+                        {
+                            EnemyController enemy = objectHit.GetComponent<EnemyController>();
+                            enemy.hp--;
+                        }
+                        if (objectHit.CompareTag("crystal"))
+                        {
+                            CrystalController crystal = objectHit.GetComponent<CrystalController>();
+                            crystal.destroyCrystal();
+                            diceController.dicePoints += Random.Range(25, 35);
+                        }
                     }
                 }
                 if (objectHit == null) Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f); else Debug.DrawRay(ray.origin, ray.direction * 10f, Color.white, 1f);

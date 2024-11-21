@@ -315,6 +315,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8248793777005405238, guid: 09a8ff0409073c641836df6ff977dffa, type: 3}
+      propertyPath: diceController
+      value: 
+      objectReference: {fileID: 1749145253}
+    - target: {fileID: 8248793777005405238, guid: 09a8ff0409073c641836df6ff977dffa, type: 3}
       propertyPath: playerThompsonController
       value: 
       objectReference: {fileID: 1425915257}
@@ -2528,6 +2532,10 @@ PrefabInstance:
       propertyPath: hapticDurr
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5059888701772787446, guid: 509519a83cf48f0429042a83a75e9b03, type: 3}
+      propertyPath: diceController
+      value: 
+      objectReference: {fileID: 1749145253}
     - target: {fileID: 5059888701772787446, guid: 509519a83cf48f0429042a83a75e9b03, type: 3}
       propertyPath: playerM1GController
       value: 
@@ -7082,6 +7090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2419667550146628877, guid: c16c77a7ab7cd9f4e84f02bccbcc520e, type: 3}
       propertyPath: m_Name
+      value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419667550146628877, guid: c16c77a7ab7cd9f4e84f02bccbcc520e, type: 3}
+      propertyPath: m_TagString
       value: enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3628882014891373786, guid: c16c77a7ab7cd9f4e84f02bccbcc520e, type: 3}
