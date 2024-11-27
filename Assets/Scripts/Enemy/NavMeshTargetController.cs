@@ -9,6 +9,7 @@ public class NavMeshTargetController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //keeps the target at tge player
         transform.position = target.position;
     }
 }

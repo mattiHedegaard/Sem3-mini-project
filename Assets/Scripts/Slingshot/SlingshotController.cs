@@ -15,10 +15,10 @@ public class SlingshotController : XRGrabInteractable
     {
         base.OnSelectEntered(args);
 
-        // Check which interactor is interacting
+        //check which controller is interacting
         XRBaseInteractor interactor = args.interactor;
 
-        // Check if the interactor has a tag for left or right controller
+        //check if the controller has a tag for left or right controller
         if (interactor.CompareTag("LeftController"))
         {
             isGrabbed = true;

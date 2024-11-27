@@ -23,7 +23,7 @@ public class GrabableController : XRGrabInteractable
 
     private void Update()
     {
-        
+        //adjusting the rigidbodys to be in the inventory 
         if (!inInventory)
         {
             if (rb != null)
@@ -46,6 +46,7 @@ public class GrabableController : XRGrabInteractable
 
     private void OnTriggerEnter(Collider other)
     {
+        //scales it up from the inventory if hand hovers
         if (other.CompareTag("RightController") || other.CompareTag("LeftController"))
         {
             touchingInInventory = true;
@@ -56,6 +57,7 @@ public class GrabableController : XRGrabInteractable
     {
         if (other.CompareTag("RightController") || other.CompareTag("LeftController"))
         {
+            //Resets it to inventory size
             touchingInInventory = false;
             transform.localScale = scale * shrinkAmount;
         }

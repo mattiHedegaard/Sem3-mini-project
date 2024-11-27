@@ -13,10 +13,10 @@ public class DiceIsGrabbed : XRGrabInteractable
     {
         base.OnSelectEntered(args);
 
-        // Check which interactor is interacting
+        //check which interactor(controler) is interacting
         XRBaseInteractor interactor = args.interactor;
 
-        // Check if the interactor has a tag for left or right controller
+        //check if the interactor(controller) has a tag for left or right controller
         if (interactor.CompareTag("LeftController"))
         {
             isGrabbed = true;
@@ -32,6 +32,7 @@ public class DiceIsGrabbed : XRGrabInteractable
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        //retracts the point and makes the dice ready to be rolled again
         base.OnSelectExited(args);
         isGrabbed = false;
         if (controller.enoughPoints)

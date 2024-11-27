@@ -60,7 +60,7 @@ public class PlayerThompsonController : MonoBehaviour
             if (grabableController.isGrabbed)
             {
 
-
+                //sets the variables acording to which hand is holding it
                 if (grabableController.hand == "left")
                 {
                     leftHandDefaultModel.SetActive(false);

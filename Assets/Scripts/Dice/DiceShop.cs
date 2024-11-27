@@ -31,6 +31,7 @@ public class DiceShop : MonoBehaviour
 
     private void Update()
     {
+        //sets the objects active/inactive when the shop is avtive/inactive
         if (inShop)
         {
             m1gSIObject.SetActive(true);

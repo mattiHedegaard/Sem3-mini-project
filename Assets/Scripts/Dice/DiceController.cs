@@ -46,6 +46,7 @@ public class DiceController : MonoBehaviour
         leftGrip.action.Enable();
         rightGrip.action.Enable();
 
+        //creates a list of all the number child objects placed on each side of the die
         foreach (Transform child in transform)
         {
             numberList.Add(child.gameObject);
@@ -76,6 +77,7 @@ public class DiceController : MonoBehaviour
 
         if ((rightMenuPressed == 1f || leftMenuPressed == 1f) && enoughPoints) diceCalled = true;
 
+        //the dice follows the player
         if (diceCalled)
         {
             if (rightGripPressed == 1f || leftGripPressed == 1f)
@@ -90,6 +92,7 @@ public class DiceController : MonoBehaviour
             transform.position = newPosition;
         }
 
+        //when it is grabbed it sets diceReady to true so that it knows that it can be rolled(so that it os not enough it is being pushed on the ground
         if (dig.isGrabbed)
         {
             diceReady = true;
@@ -101,13 +104,16 @@ public class DiceController : MonoBehaviour
 
         if (diceRolled && dig.diceRolled)
         {
+            //checks if the dice is laying still
             if (rb.IsSleeping())
             {
+                //sorts the objects depending on their y value, the highest is what is rolled.
                 numberList.Sort((a, b) => b.transform.position.y.CompareTo(a.transform.position.y));
                 rolled = int.Parse(numberList[0].name);
                 diceShop.rolledPoints += rolled;
                 rolled = 0;
 
+                //resets so it is ready to be rolled again
                 diceRolled = false;
                 dig.diceRolled = false;
                 diceShop.inShop = true;

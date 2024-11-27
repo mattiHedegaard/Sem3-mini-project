@@ -28,11 +28,12 @@ public class ShopItem : MonoBehaviour
 
     private void Start()
     {
+        //saves the original scale
         scale = transform.localScale;
         if (whichWeapon != weaponType.CANCEL) text.text = $"{name}\nx{ammoAmount}\nPrice: {price}"; else text.text = "Back";
     }
 
-    private void Update()
+    private void Update() //updates the color and size the player can afford it
     {
         if (price > diceShop.rolledPoints)
         {
@@ -50,7 +51,7 @@ public class ShopItem : MonoBehaviour
     {
         if (diceShop.rolledPoints >= price)
         {
-            switch (whichWeapon)
+            switch (whichWeapon) //checks the enum for which shop item is touched and then adds to the right gun
             {
                 case weaponType.THOMPSON:
                     ThompsonGunShoot thompson = weapon.GetComponent<ThompsonGunShoot>();

@@ -9,7 +9,7 @@ public class RockController : MonoBehaviour
 
     private void Start()
     {
-        diceController = FindObjectOfType<DiceController>();
+        diceController = FindObjectOfType<DiceController>(); // finds the dice so that it can add to its points
     }
 
     private void Update()
@@ -19,12 +19,13 @@ public class RockController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //calls the crystals destroyfunction if hit by the rock
         if (collision.gameObject.CompareTag("crystal"))
         {
             Destroy(gameObject);
             CrystalController crystalController = collision.gameObject.GetComponent<CrystalController>();
             crystalController.destroyCrystal();
-            diceController.dicePoints += Random.Range(25, 35);
+            diceController.dicePoints += Random.Range(25, 35); // ads to the dies points
         }
     }
 }

@@ -8,6 +8,7 @@ public class InventoryController : MonoBehaviour
 
     private void Update()
     {
+        //Updates the scale and rotation and size for the the object is put in the inventory
         if (holding != null)
         {
             GrabableController holdingGrab = holding.GetComponent<GrabableController>();
@@ -19,10 +20,10 @@ public class InventoryController : MonoBehaviour
                     holding.transform.position = transform.position;
                     Vector3 currentEulerAngles = transform.rotation.eulerAngles;
 
-                    // Create a new Vector3 with the desired adjustments
+                    //create a new Vector3 with adjustments
                     Vector3 angle = new Vector3(currentEulerAngles.x + 45, currentEulerAngles.y - 90, currentEulerAngles.z);
 
-                    // Set the rotation of currObject using the modified angles
+                    //set the rotation of currObject using the modified angles
                     holding.transform.rotation = Quaternion.Euler(angle);
                 }
                 else

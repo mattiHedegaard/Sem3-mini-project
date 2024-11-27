@@ -28,10 +28,12 @@ public class ThompsonGunShoot : MonoBehaviour
         GameObject objectHit = null;
 
         if (playerThompsonController != null)
-        {
+        { 
+            //checks if the trigger is pressed and if the gun can shoot
             if (playerThompsonController.currentHandTriggerPressed == 1f && shootCD <= 0f && ammo > 0)
             {
                 ammo -= 1;
+                //uses a timer so that the trigger can be hold and it is then a machine gun
                 shootCD = shootCDMax;
                 playerThompsonController.currentXRController.SendHapticImpulse(hapticAmp, hapticDurr);
 
@@ -45,15 +47,18 @@ public class ThompsonGunShoot : MonoBehaviour
 
                     if (objectHit != null)
                     {
+                        // creates a small red sphere at the hit point
                         Vector3 hitLocation = hit.point;
                         GameObject bulletHole = Instantiate(prefab, hitLocation, Quaternion.identity);
                         bulletHole.transform.SetParent(objectHit.transform);
 
+                        //damaginf enemis
                         if (objectHit.CompareTag("enemy"))
                         {
                             EnemyController enemy = objectHit.GetComponent<EnemyController>();
                             enemy.hp--;
                         }
+                        //destroying crystals
                         if (objectHit.CompareTag("crystal"))
                         {
                             CrystalController crystal = objectHit.GetComponent<CrystalController>();

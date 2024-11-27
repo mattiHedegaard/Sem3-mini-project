@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //updates the items isGrabbed, so that the scale and pos fit for the inventory
     private void Update()
     {
         holdingSomething = false;

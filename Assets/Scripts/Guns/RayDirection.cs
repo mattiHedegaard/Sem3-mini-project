@@ -8,6 +8,7 @@ public class RayDirection : MonoBehaviour
 
     private void Update()
     {
+        //makes the raycast dir match the iron sights
         transform.LookAt(lookAt);
     }
 }

@@ -21,6 +21,7 @@ public class handAnimationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //the controller with the input
         XRController = controller.GetComponent<ActionBasedController>();
         if (XRController == null)
         {
@@ -39,9 +40,10 @@ public class handAnimationController : MonoBehaviour
         float grabPressed = grab.action.ReadValue<float>();
         float grabAValue = 0f;
         float triggerAValue = 0f;
-        if (triggerPressed != 0f) triggerAValue = triggerPressed - 0.001f; else triggerAValue = 0f;
+        if (triggerPressed != 0f) triggerAValue = triggerPressed - 0.001f; else triggerAValue = 0f; // this is to offset a bit because else it would have looped to the first fram on 1
         if (grabPressed != 0f) grabAValue = grabPressed - 0.001f; else grabAValue = 0f;
 
+        //sets the animation
         ac.Play("triggerHanAnimation", 1, triggerAValue);
         ac.Play("grabHandAnimation", 2, grabAValue);
 

@@ -14,6 +14,7 @@ public class CharacterControllerPos : MonoBehaviour
 
     private void Start()
     {
+        //movement whened wired because it touched these colliders. so i ignore them
         cc = GetComponent<CharacterController>();
         Physics.IgnoreCollision(cc.GetComponent<Collider>(), m1g);
         Physics.IgnoreCollision(cc.GetComponent<Collider>(), thompson);

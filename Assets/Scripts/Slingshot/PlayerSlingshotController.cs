@@ -78,6 +78,7 @@ public class playerSlingshotController : MonoBehaviour
         {
             if (grabableController.isGrabbed)
             {
+                //sets the variable for which hand is used and creates a ronck in the other hand
                 if (grabableController.hand == "left")
                 {
                     rightHandDefaultModel.SetActive(false);
@@ -116,10 +117,11 @@ public class playerSlingshotController : MonoBehaviour
 
             if (!isRockLoaded && isNearLeatherChild(currentRockHand) && currentHandTriggerPressed != 0f)
             {
-                createRock();
+                createRock(); //creates rock if close enough to the slingshot
             }
             else if (isRockLoaded)
             {
+                //makes the ronck follow the player hand
                 pullRockBack(currentHandTriggerPressed, currentRockHand, currentXRController);
                 currentRockXRController.SendHapticImpulse(holdingHapticAmp, holdingHapticDurr);
             }
@@ -130,6 +132,7 @@ public class playerSlingshotController : MonoBehaviour
     {
         if (controller != null)
         {
+            //checks the distance between the hand and the leather of the slingshot
             float distance = Vector3.Distance(controller.transform.position, leather.transform.position);
             float distanceThreshold = 0.1f;
 
@@ -151,7 +154,7 @@ public class playerSlingshotController : MonoBehaviour
         leather.transform.position = new Vector3(controller.transform.position.x - 0.008f, controller.transform.position.y, controller.transform.position.z);
 
         Vector3 directionToStart = (start.transform.position - loadedRock.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(directionToStart);
+        Quaternion lookRotation = Quaternion.LookRotation(directionToStart); // makes the rock look fowrad to ensure the direction when applying force
         loadedRock.transform.rotation = lookRotation;
 
         if (trigger == 0f)
@@ -165,18 +168,18 @@ public class playerSlingshotController : MonoBehaviour
     private void releaseRock(GameObject controller)
     {
         loadedRock.transform.GetChild(0).gameObject.SetActive(true);
-        float force = Vector3.Distance(controller.transform.position, start.transform.position);
+        float force = Vector3.Distance(controller.transform.position, start.transform.position); //calculates tge force
         Vector3 forceDir = (start.transform.position -  loadedRock.transform.position).normalized;
-        //forceDir.y = 0;
 
-        loadedRock.transform.position = start.transform.position;
+        loadedRock.transform.position = start.transform.position; //places the rock at the center of the slingshot so it is shot from there
 
         float totalForce = force * forceMultiplier;
-        if (totalForce > 2.5f) totalForce = 2.5f;
+        if (totalForce > 2.5f) totalForce = 2.5f; // sets the force to the max force
 
         Rigidbody rockRb = loadedRock.GetComponent<Rigidbody>();
-        rockRb.AddForce(forceDir * totalForce, ForceMode.Impulse);
+        rockRb.AddForce(forceDir * totalForce, ForceMode.Impulse); //adds the force
 
+        //resets to the next rock
         isRockLoaded = false;
         loadedRock = null;
     }

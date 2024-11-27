@@ -15,6 +15,7 @@ public class SpawnerController : MonoBehaviour
 
     private void Start()
     {
+        //sets the timer so the player has a few seconds before enemies spawn
         spawnTimer = 10 + Random.Range(-5f, 5f);
     }
 
@@ -23,6 +24,7 @@ public class SpawnerController : MonoBehaviour
     {
         if (spawnTimer > 0) spawnTimer -= 1 * Time.deltaTime;
 
+        //spawns the enemy and sets it target for the navmesh
         if (spawnTimer <= 0)
         {
             GameObject enemy = Instantiate(enemyPrefab,transform.position,transform.rotation);
